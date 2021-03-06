@@ -1,0 +1,18 @@
+[
+    {
+        "bezeichnung": "Motor",
+        "preis": 10000,
+        "hersteller": {
+            "herstellerName": "Ferrari",
+            "telephonnummer": "0791111111111"
+        }
+    },
+    {
+        "bezeichnung": "Fenders",
+        "preis": 15000,
+        "hersteller": {
+            "herstellerName": "Mansuri",
+            "telephonnummer": "0792222222"
+        }
+    }
+]
