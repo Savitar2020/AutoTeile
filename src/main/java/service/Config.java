@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * configure the web services and properties
  * <p>
- * M151: BookDB
+ * M151:
  *
  * @author Jason A. Caviezel
  */
@@ -20,7 +20,7 @@ import java.util.Set;
 @ApplicationPath("/resource")
 
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "/home/bzz/webapp/book.properties";
+    private static final String PROPERTIES_PATH = "auto.properties";
     private static Properties properties = null;
 
     /**
@@ -32,7 +32,7 @@ public class Config extends Application {
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(TestService.class);
-        //providers.add(BookService.class);
+        providers.add(AutoTeileService.class);
         return providers;
     }
 

@@ -1,6 +1,6 @@
 package model;
 
-public class AutoTeile {
+public class AutoTeile extends Hersteller {
     private String bezeichnung;
     private float preis;
     private Hersteller hersteller;
