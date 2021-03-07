@@ -126,19 +126,23 @@ public class DataHandler {
         try {
             byte[] jsonData = Files.readAllBytes(Paths.get(Config.getProperty("autoTeileJSON")));
             ObjectMapper objectMapper = new ObjectMapper();
+            Lager[] lagerlist = objectMapper.readValue(jsonData, Lager[].class);
             AutoTeile[] teile = objectMapper.readValue(jsonData, AutoTeile[].class);
-            for (AutoTeile teil : teile) {
-                String herstellerName = teil.getHersteller().getHerstellerName();
-                Hersteller hersteller;
-                if (getHerstellerMap().containsKey(herstellerName)) {
-                    hersteller = getHerstellerMap().get(herstellerName);
-                } else {
-                    hersteller = teil.getHersteller();
-                    getHerstellerMap().put(herstellerName, hersteller);
-                }
-                teil.setHersteller(hersteller);
-                getHerstellerMap().put(teil.getBezeichnung(), teil);
+            for (Lager lager : lagerlist) {
+                getLagerList().add(lager);
+                for (AutoTeile teil : teile) {
+                    String herstellerName = teil.getHersteller().getHerstellerName();
+                    Hersteller hersteller;
+                    if (getHerstellerMap().containsKey(herstellerName)) {
+                        hersteller = getHerstellerMap().get(herstellerName);
+                    } else {
+                        hersteller = teil.getHersteller();
+                        getHerstellerMap().put(herstellerName, hersteller);
+                    }
+                    teil.setHersteller(hersteller);
+                    getHerstellerMap().put(teil.getBezeichnung(), teil);
 
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -146,7 +150,7 @@ public class DataHandler {
     }
 
     /**
-     * write the books and publishers
+     *
      *
      */
     private static void writeJSON() {
