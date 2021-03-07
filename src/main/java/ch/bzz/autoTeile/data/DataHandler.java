@@ -1,10 +1,10 @@
-package data;
+package ch.bzz.autoTeile.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.AutoTeile;
-import model.Hersteller;
-import model.Lager;
-import service.Config;
+import ch.bzz.autoTeile.model.AutoTeile;
+import ch.bzz.autoTeile.model.Hersteller;
+import ch.bzz.autoTeile.model.Lager;
+import ch.bzz.autoTeile.service.Config;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * data handler for reading and writing the csv files
+ * ch.bzz.autoTeile.data handler for reading and writing the csv files
  * <p>
  *
  * @author Jason A. Caviezel
@@ -26,7 +26,7 @@ public class DataHandler {
     private static final DataHandler instance = new DataHandler();
     private static Map<String, AutoTeile> autoTeileMap;
     private static Map<String, Hersteller> herstellerMap;
-    private static List<Lager> lagerList = null;
+    private static List<Lager> lagerList;
 
     /**
      * default constructor: defeat instantiation
@@ -78,9 +78,8 @@ public class DataHandler {
     }
 
     /**
-     * reads a single publisher identified by its uuid
      * @param herstellerName  the identifier
-     * @return publisher-object
+     * @return hersteller-object
      */
     public static Hersteller readHersteller(String herstellerName) {
         Hersteller hersteller = new Hersteller();
@@ -100,7 +99,7 @@ public class DataHandler {
     }
 
     /**
-     * gets the bookMap
+     * gets the autoTeileMap
      * @return the bookMap
      */
     public static Map<String, AutoTeile> getAutoTeileMap() {
@@ -108,8 +107,8 @@ public class DataHandler {
     }
 
     /**
-     * gets the publisherMap
-     * @return the publisherMap
+     * gets the herstellerMap
+     * @return the herstellerMap
      */
     public static Map<String, Hersteller> getHerstellerMap() {
         return herstellerMap;

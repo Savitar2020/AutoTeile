@@ -1,7 +1,8 @@
-package service;
+package ch.bzz.autoTeile.service;
 
-import data.DataHandler;
-import model.AutoTeile;
+import ch.bzz.autoTeile.data.DataHandler;
+import ch.bzz.autoTeile.model.AutoTeile;
+import ch.bzz.autoTeile.model.Lager;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.awt.*;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -20,11 +21,11 @@ public class AutoTeileService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listTeile() {
-        Map<String, AutoTeile> autoTeileMap = data.DataHandler.getAutoTeileMap();
+        List<Lager> lagerList = ch.bzz.autoTeile.data.DataHandler.getLagerList();
 
         Response response = Response
                 .status(200)
-                .entity(autoTeileMap)
+                .entity(lagerList)
                 .build();
         return response;
     }
@@ -40,7 +41,7 @@ public class AutoTeileService {
 
         try {
             UUID.fromString(bezeichnung);
-            teil = data.DataHandler.readBook(bezeichnung);
+            teil = ch.bzz.autoTeile.data.DataHandler.readBook(bezeichnung);
             if (teil.getHerstellerName() == null) {
                 httpStatus = 484;
             } else {

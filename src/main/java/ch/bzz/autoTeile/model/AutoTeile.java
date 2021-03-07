@@ -1,4 +1,4 @@
-package model;
+package ch.bzz.autoTeile.model;
 
 public class AutoTeile extends Hersteller {
     private String bezeichnung;

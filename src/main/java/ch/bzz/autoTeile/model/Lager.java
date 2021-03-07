@@ -1,4 +1,4 @@
-package model;
+package ch.bzz.autoTeile.model;
 
 import java.util.Date;
 import java.util.List;
