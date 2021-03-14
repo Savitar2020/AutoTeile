@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "c202e646-f5bc-494c-bd1b-bb8b45eb7224",
+		"name": "AutoTeile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "o.1 Testservice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/test/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"test",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validate response\", function () {",
+							"    pm.response.to.be.json;",
+							"    pm.expect(pm.response.text().to.include(\"bezeichnung\"))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teil",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "autoteil",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "unbekanntes teil",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}

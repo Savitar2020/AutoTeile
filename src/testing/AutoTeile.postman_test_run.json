@@ -1,0 +1,81 @@
+{
+	"id": "2cc39eab-7473-4d2f-a344-ad3154ac224e",
+	"name": "AutoTeile",
+	"timestamp": "2021-03-07T10:43:42.410Z",
+	"collection_id": "c202e646-f5bc-494c-bd1b-bb8b45eb7224",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 2,
+	"results": [
+		{
+			"id": "3a1a7001-89b8-426e-a55f-11cb13356ae5",
+			"name": "o.1 Testservice",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/test/test",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b22e267c-80eb-4660-9e1f-d7871dfbcf23",
+			"name": "Lager",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+			"time": 7,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status test": false,
+				"Validate response": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate response": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": false,
+					"Validate response": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 27,
+	"collection": {
+		"requests": [
+			{
+				"id": "3a1a7001-89b8-426e-a55f-11cb13356ae5",
+				"method": "GET"
+			},
+			{
+				"id": "b22e267c-80eb-4660-9e1f-d7871dfbcf23",
+				"method": "GET"
+			},
+			{
+				"id": "4ac13fbd-b36e-4e33-a2da-919dc01c5b9b",
+				"method": "GET"
+			}
+		]
+	}
+}
