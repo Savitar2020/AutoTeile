@@ -10,10 +10,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * ch.bzz.autoTeile.data handler for reading and writing the csv files
@@ -34,6 +31,7 @@ public class DataHandler {
     private DataHandler() {
         autoTeileMap = new HashMap<>();
         herstellerMap = new HashMap<>();
+        lagerList = new ArrayList<>();
         readJSON();
     }
 
@@ -55,12 +53,29 @@ public class DataHandler {
         return null;
     }
 
+    public static Lager readLager(int index) {
+        Lager lager = new Lager();
+        if (getLagerList().contains(index)) {
+            lager = getLagerList().get(index);
+        }
+        return lager;
+    }
+
+    public static void insertLager(Lager index) {
+        getLagerList().add(index.getLagerList().size(), index);
+        writeJSON();
+    }
+
+    public static void updateLager() {
+        writeJSON();
+    }
+
     /**
      * reads a single book identified by its uuid
      * @param bezeichnung  the identifier
      * @return AutoTeile-object
      */
-    public static AutoTeile readBook(String bezeichnung) {
+    public static AutoTeile readTeil(String bezeichnung) {
         AutoTeile teil = new AutoTeile();
         if (getAutoTeileMap().containsKey(bezeichnung)) {
             teil = getAutoTeileMap().get(bezeichnung);
@@ -72,9 +87,44 @@ public class DataHandler {
      * saves a part
      * @param teil
      */
-    public static void saveTeil(AutoTeile teil) {
+    public static void insertTeil(AutoTeile teil) {
         getAutoTeileMap().put(teil.getBezeichnung(), teil);
         writeJSON();
+    }
+
+    /**
+     * updates the Teilmap
+     */
+    public static void updateTeil() {
+        writeJSON();
+    }
+
+    /**
+     * removes a teil from the TeilMap
+     *
+     * @param teilUUID the uuid of the teil to be removed
+     * @return success
+     */
+    public static boolean deleteTeil(String teilUUID) {
+        if (getAutoTeileMap().remove(teilUUID) != null) {
+            writeJSON();
+            return true;
+        } else
+            return false;
+    }
+
+    /**
+     * removes a Autoteil from the Autoteilelist
+     *
+     * @param teilUUID the UUID of the Autoteil to be removed
+     * @return success
+     */
+    public static boolean deleteLager(String teilUUID) {
+        if (getLagerList().remove(teilUUID) != true) {
+            writeJSON();
+            return true;
+        } else
+            return false;
     }
 
     /**
@@ -93,14 +143,54 @@ public class DataHandler {
      * saves a hersteller
      * @param hersteller  the hersteller to be saved
      */
-    public static void savePublisher(Hersteller hersteller) {
-        getHerstellerMap().put(hersteller.getHerstellerName(), hersteller);
+    public static void insertHersteller(Hersteller hersteller) {
+        AutoTeile autoTeile = new AutoTeile();
+        autoTeile.setTeilUUID(UUID.randomUUID().toString());
+        autoTeile.setBezeichnung("");
+        autoTeile.setHersteller(hersteller);
+        insertTeil(autoTeile);
         writeJSON();
     }
 
     /**
+     * removes a Hersteller from the HerstellerMap
+     *
+     * @param herstellerUUID the index of the Autoteil to be removed
+     * @return success
+     */
+    public static int deleteHersteller(String herstellerUUID) {
+        int errorcode = 1;
+        for (Map.Entry<String, AutoTeile> entry : getAutoTeileMap().entrySet()) {
+            AutoTeile teil = entry.getValue();
+            if (teil.getHersteller().getHerstellerUUID().equals(herstellerUUID)) {
+                if (teil.getBezeichnung() == null || teil.getBezeichnung().equals("")) {
+                    deleteAutoteil(teil.getHerstellerUUID());
+                    errorcode = 0;
+                } else {
+                    return -1;
+                }
+            }
+        }
+        writeJSON();
+        return errorcode;
+    }
+
+    public static boolean updateHersteller(Hersteller hersteller) {
+        boolean found = false;
+        for (Map.Entry<String, AutoTeile> entry : getAutoTeileMap().entrySet()) {
+            AutoTeile teil = entry.getValue();
+            if (teil.getHersteller().getHerstellerUUID().equals(hersteller.getHerstellerUUID())) {
+                teil.setHersteller(hersteller);
+                found = true;
+            }
+        }
+        writeJSON();
+        return found;
+    }
+
+    /**
      * gets the autoTeileMap
-     * @return the bookMap
+     * @return the autoTeileMap
      */
     public static Map<String, AutoTeile> getAutoTeileMap() {
         return autoTeileMap;
@@ -114,8 +204,8 @@ public class DataHandler {
         return herstellerMap;
     }
 
-    public static void setPublisherMap(Map<String, Hersteller> publisherMap) {
-        DataHandler.herstellerMap = publisherMap;
+    public static void setHerstellerMap(Map<String, Hersteller> herstellerMap) {
+        DataHandler.herstellerMap = herstellerMap;
     }
 
     /**
@@ -161,9 +251,17 @@ public class DataHandler {
         try {
             fileOutputStream = new FileOutputStream(teilPath);
             writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
-            objectMapper.writeValue(writer, getAutoTeileMap().values());
+            objectMapper.writeValue(writer, getLagerList().indexOf(lagerList));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static Lager readList(Lager lager) {
+        Lager lagers = new Lager();
+        if (getLagerList().contains(lager)) {
+            lagers = getLagerList().get(1);
+        }
+        return lager;
     }
 }

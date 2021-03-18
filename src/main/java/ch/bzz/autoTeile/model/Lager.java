@@ -6,6 +6,7 @@ import java.util.List;
 public class Lager {
     private List<AutoTeile> lagerList;
     private Date eintragsdatum;
+    public String lagerUUID;
 
     public Date getEintragsdatum() {
         return eintragsdatum;
@@ -21,5 +22,13 @@ public class Lager {
 
     public void setLagerList(List<AutoTeile> partsList) {
         this.lagerList = partsList;
+    }
+
+    public String getLagerUUID() {
+        return lagerUUID;
+    }
+
+    public void setLagerUUID(String lagerUUID) {
+        this.lagerUUID = lagerUUID;
     }
 }

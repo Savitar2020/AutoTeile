@@ -1,6 +1,7 @@
 package ch.bzz.autoTeile.model;
 
 public class AutoTeile extends Hersteller {
+    private String teilUUID;
     private String bezeichnung;
     private float preis;
     private Hersteller hersteller;
@@ -27,5 +28,9 @@ public class AutoTeile extends Hersteller {
 
     public void setHersteller(Hersteller hersteller) {
         this.hersteller = hersteller;
+    }
+
+    public void setTeilUUID(String teilUUID) {
+        this.teilUUID = teilUUID;
     }
 }
