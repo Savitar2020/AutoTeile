@@ -1,9 +1,17 @@
 package ch.bzz.autoTeile.model;
 
+import java.math.BigDecimal;
+/**
+ * a teil in the Autoteile
+ * <p>
+ * AutoTeile
+ *
+ * @author Jason A. Caviezel
+ */
 public class AutoTeile extends Hersteller {
     private String teilUUID;
     private String bezeichnung;
-    private float preis;
+    private BigDecimal preis;
     private Hersteller hersteller;
 
     public String getBezeichnung() {
@@ -14,11 +22,11 @@ public class AutoTeile extends Hersteller {
         this.bezeichnung = bezeichnung;
     }
 
-    public float getPreis() {
+    public BigDecimal getPreis() {
         return preis;
     }
 
-    public void setPreis(float preis) {
+    public void setPreis(BigDecimal preis) {
         this.preis = preis;
     }
 

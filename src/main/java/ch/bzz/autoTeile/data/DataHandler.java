@@ -53,16 +53,16 @@ public class DataHandler {
         return null;
     }
 
-    public static Lager readLager(int index) {
+    public static Lager readLager(String lagerUUID) {
         Lager lager = new Lager();
-        if (getLagerList().contains(index)) {
-            lager = getLagerList().get(index);
+        if (getLagerList().contains(lagerUUID)) {
+            lager = getLagerList().get(Integer.parseInt(lagerUUID));
         }
         return lager;
     }
 
-    public static void insertLager(Lager index) {
-        getLagerList().add(index.getLagerList().size(), index);
+    public static void insertLager(Lager lager) {
+        getLagerList().add(Integer.parseInt(lager.getLagerUUID()), lager);
         writeJSON();
     }
 
@@ -94,9 +94,19 @@ public class DataHandler {
 
     /**
      * updates the Teilmap
+     * @param teil
      */
-    public static void updateTeil() {
+    public static boolean updateTeil(AutoTeile teil) {
+        boolean found = false;
+        for (Map.Entry<String, Hersteller> entry : getHerstellerMap().entrySet()) {
+            Hersteller hersteller = entry.getValue();
+            if (hersteller.getHerstellerUUID().equals(teil.getHerstellerUUID())) {
+                hersteller.setHerstellerName("");
+                found = true;
+            }
+        }
         writeJSON();
+        return found;
     }
 
     /**
@@ -173,6 +183,20 @@ public class DataHandler {
         }
         writeJSON();
         return errorcode;
+    }
+
+    /**
+     * removes a teil from the Autoteilemap
+     *
+     * @param teilUUID the uuid of the teil to be removed
+     * @return success
+     */
+    public static boolean deleteAutoteil(String teilUUID) {
+        if (getAutoTeileMap().remove(teilUUID) != null) {
+            writeJSON();
+            return true;
+        } else
+            return false;
     }
 
     public static boolean updateHersteller(Hersteller hersteller) {

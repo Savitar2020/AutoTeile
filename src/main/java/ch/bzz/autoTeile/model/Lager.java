@@ -3,6 +3,13 @@ package ch.bzz.autoTeile.model;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * a lager of autoteile
+ * <p>
+ * AutoTeile
+ *
+ * @author Jason A. Caviezel
+ */
 public class Lager {
     private List<AutoTeile> lagerList;
     private Date eintragsdatum;

@@ -1,5 +1,12 @@
 package ch.bzz.autoTeile.model;
 
+/**
+ * a hersteller of Autoteile
+ * <p>
+ * AutoTeile
+ *
+ * @author Jason A. Caviezel
+ */
 public class Hersteller {
     private String herstellerName;
     private int telephonnummer;
