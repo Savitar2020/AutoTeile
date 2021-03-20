@@ -68,6 +68,53 @@
 			"response": []
 		},
 		{
+			"name": "read teil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validate response\", function () {",
+							"    pm.response.to.be.json;",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(pm.response.bezeichnung().to.include(\"Turbo\"))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teil",
+						"list"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "autoteil",
 			"request": {
 				"method": "GET",
@@ -82,6 +129,512 @@
 				"method": "GET",
 				"header": [],
 				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "insert lager",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "eintragsdatum",
+							"value": "2020.03.20",
+							"type": "text"
+						},
+						{
+							"key": "teilUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/lager/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"lager",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert teil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bezeichnung",
+							"value": "Turbo",
+							"type": "text"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd152",
+							"type": "text"
+						},
+						{
+							"key": "preis",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "teilUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd153",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teile",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert hersteller",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "Mansuri",
+							"type": "text"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd152",
+							"type": "text"
+						},
+						{
+							"key": "telephonnummer",
+							"value": "1234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"hersteller",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update lager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "eintragsdatum",
+							"value": "2020.03.20",
+							"type": "text"
+						},
+						{
+							"key": "teilUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/lager/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"lager",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update unknown teil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bezeichnung",
+							"value": "Turbo",
+							"type": "text"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd152",
+							"type": "text"
+						},
+						{
+							"key": "preis",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "teilUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd156",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teile",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update invalid teil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bezeichnung",
+							"value": "Turbo",
+							"type": "text"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd152",
+							"type": "text"
+						},
+						{
+							"key": "preis",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "teilUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea532XXXXXX",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teile",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update hersteller",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "Mansuri",
+							"type": "text"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd152",
+							"type": "text"
+						},
+						{
+							"key": "telephonnummer",
+							"value": "1234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"hersteller",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update teil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bezeichnung",
+							"value": "Turbo",
+							"type": "text"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd152",
+							"type": "text"
+						},
+						{
+							"key": "preis",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "teilUUID",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd153",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teile",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete teil",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd153",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teile",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd153"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete unknown teil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd112",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teile",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd112"
+						}
+					]
+				}
 			},
 			"response": []
 		}
