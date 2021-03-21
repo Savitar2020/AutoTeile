@@ -5,6 +5,8 @@ import ch.bzz.autoTeile.model.AutoTeile;
 import ch.bzz.autoTeile.model.Hersteller;
 import ch.bzz.autoTeile.model.Lager;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -40,15 +42,16 @@ public class AutoTeileService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readTeile(
-            @QueryParam("teil") String bezeichnung
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
+            @QueryParam("uuid") String teilUUID
     ) {
         AutoTeile teil = null;
         int httpStatus;
 
         try {
-            UUID.fromString(bezeichnung);
-            teil = ch.bzz.autoTeile.data.DataHandler.readTeil(bezeichnung);
-            if (teil.getHerstellerName() == null) {
+            UUID teilkey = UUID.fromString(teilUUID);
+            teil = ch.bzz.autoTeile.data.DataHandler.readTeil(teilUUID);
+            if (teil.getBezeichnung() == null) {
                 httpStatus = 484;
             } else {
                 httpStatus = 200;
@@ -66,22 +69,19 @@ public class AutoTeileService {
 
     /**
      * creates a new AutoTeil
-     * @param bezeichnung the name of the Autoteil
-     * @param hersteller the hersteller
-     * @param price the price
+     * @param teil a valid Autoteile Object
+     * @param herstellerUUID the unique key of the hersteller
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createAutoteil(
-            @FormParam("bezeichnung") String bezeichnung,
-            @FormParam("hersteller") Hersteller hersteller,
-            @FormParam("teilUUID") String teilUUID,
-            @FormParam("price") BigDecimal price
+            @Valid @BeanParam AutoTeile teil,
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
+            @FormParam("herstellerUUID") String herstellerUUID
     ) {
         int httpStatus = 200;
-        AutoTeile teil = new AutoTeile();
         teil.setTeilUUID(UUID.randomUUID().toString());
         teil.setBezeichnung(bezeichnung);
         teil.setPreis(price);
@@ -98,31 +98,28 @@ public class AutoTeileService {
 
     /**
      * updates an existing Autoteil
-     * @param bezeichnung the bezeichnung
-     * @param hersteller the hersteller
-     * @param herstellerUUID the herstellerUUID
-     * @param teilUUID the teilUUID
-     * @param price the price
+     * @param herstellerUUID a valid UUID
+     * @param teilUUID a valid UUID
+     * @param teil a valid Autoteile Object
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateTeil(
-            @FormParam("bezeichnung") String bezeichnung,
-            @FormParam("hersteller") String hersteller,
+            @Valid @BeanParam AutoTeile teil,
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
             @FormParam("herstellerUUID") String herstellerUUID,
-            @FormParam("teilUUID") String teilUUID,
-            @FormParam("price") BigDecimal price
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
+            @FormParam("teilUUID") String teilUUID
     ) {
         int httpStatus = 200;
-        AutoTeile teil = new AutoTeile();
         try {
             UUID.fromString(teilUUID);
             teil.setHerstellerUUID(herstellerUUID);
-            teil.setBezeichnung(bezeichnung);
+            teil.setBezeichnung(teil.getBezeichnung());
             teil.setTeilUUID(teilUUID);
-            teil.setPreis(price);
+            teil.setPreis(teil.getPreis());
                 if (DataHandler.updateTeil(teil)) {
                     httpStatus = 200;
                 } else {
@@ -147,6 +144,7 @@ public class AutoTeileService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteAutoteil(
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
             @QueryParam("uuid") String teilUUID
     ) {
         int httpStatus;

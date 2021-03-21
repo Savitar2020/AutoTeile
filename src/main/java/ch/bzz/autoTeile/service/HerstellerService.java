@@ -5,6 +5,8 @@ import ch.bzz.autoTeile.model.AutoTeile;
 import ch.bzz.autoTeile.model.Hersteller;
 import ch.bzz.autoTeile.model.Lager;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -52,7 +54,8 @@ public class HerstellerService {
         @Path("read")
         @Produces(MediaType.APPLICATION_JSON)
         public Response readHersteller(
-                @QueryParam("hersteller") String herstellerUUID
+                @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
+                @QueryParam("uuid") String herstellerUUID
         ) {
             Hersteller hersteller = null;
             int httpStatus;
@@ -87,16 +90,16 @@ public class HerstellerService {
         @Path("create")
         @Produces(MediaType.TEXT_PLAIN)
         public Response createAutoteil(
-                @FormParam("bezeichnung") String bezeichnung,
+                @Valid @BeanParam Hersteller hersteller,
+                @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
                 @FormParam("hersteller") Hersteller hersteller,
-                @FormParam("teilUUID") String teilUUID,
-                @FormParam("price") BigDecimal price
+                @FormParam("teilUUID") String teilUUID
         ) {
             int httpStatus = 200;
             AutoTeile teil = new AutoTeile();
             teil.setTeilUUID(UUID.randomUUID().toString());
-            teil.setBezeichnung(bezeichnung);
-            teil.setPreis(price);
+            teil.setHerstellerName(hersteller.getHerstellerName());
+            teil.setTelephonnummer(teil.getTelephonnummer());
             teil.setHersteller(hersteller);
 
             DataHandler.insertTeil(teil);
@@ -121,18 +124,16 @@ public class HerstellerService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateHersteller(
-            @FormParam("autoteil") String autoteil,
-            @FormParam("herstellername") String herstellername,
-            @FormParam("telephonnummer") int telephonnummer,
+            @Valid @BeanParam Hersteller hersteller,
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
             @FormParam("herstellerUUID") String herstellerUUID
     ) {
         int httpStatus = 200;
-        Hersteller hersteller = new Hersteller();
         try {
             UUID.fromString(herstellerUUID);
             hersteller.setHerstellerUUID(herstellerUUID);
-            hersteller.setHerstellerName(herstellername);
-            hersteller.setTelephonnummer(telephonnummer);
+            hersteller.setHerstellerName(hersteller.getHerstellerName());
+            hersteller.setTelephonnummer(hersteller.getTelephonnummer());
                 if (DataHandler.updateHersteller(hersteller)) {
                     httpStatus = 200;
                 } else {
@@ -157,6 +158,7 @@ public class HerstellerService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteHersteller(
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
             @QueryParam("uuid") String herstellerUUID
     ) {
         int httpStatus;

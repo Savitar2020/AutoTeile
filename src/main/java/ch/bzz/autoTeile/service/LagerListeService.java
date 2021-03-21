@@ -5,6 +5,7 @@ import ch.bzz.autoTeile.model.AutoTeile;
 import ch.bzz.autoTeile.model.Hersteller;
 import ch.bzz.autoTeile.model.Lager;
 
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -39,13 +40,14 @@ public class LagerListeService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readList(
-            @QueryParam("list") String bezeichnung
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
+            @QueryParam("uuid") String lagerUUID
     ) {
         Lager lager = null;
         int httpStatus;
 
         try {
-            UUID.fromString(bezeichnung);
+            UUID.fromString(lagerUUID);
             lager = ch.bzz.autoTeile.data.DataHandler.readList(lager);
             if (lager.getLagerList() == null) {
                 httpStatus = 484;

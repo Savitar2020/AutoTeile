@@ -1,5 +1,10 @@
 package ch.bzz.autoTeile.model;
 
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
 import java.math.BigDecimal;
 /**
  * a teil in the Autoteile
@@ -9,9 +14,17 @@ import java.math.BigDecimal;
  * @author Jason A. Caviezel
  */
 public class AutoTeile extends Hersteller {
+    @FormParam("teilUUID")
     private String teilUUID;
+    @FormParam("bezeichnung")
+    @NotEmpty
+    @Size(min=2, max=30)
     private String bezeichnung;
+    @FormParam("price")
+    @DecimalMax(value= 100000)
+    @DecimalMin(value= 1)
     private BigDecimal preis;
+    @FormParam("hersteller")
     private Hersteller hersteller;
 
     public String getBezeichnung() {
