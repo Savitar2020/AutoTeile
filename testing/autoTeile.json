@@ -1,9 +1,12 @@
 [
     {
+    "lagerUUID": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
     "lagerList": {
+        "teilUUID": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
         "bezeichnung": "Motor",
         "preis": 10000,
         "hersteller": {
+            "herstellerUUID": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
             "herstellerName": "Ferrari",
             "telephonnummer": "0791111111111"
         }
@@ -11,10 +14,13 @@
         "eintragsdatum": "2021.03.01"
     },
     {
+        "lagerUUID": "1ff64a1f-4f6a-43fb-a622-ea5329fcd152",
         "lagerList": {
+            "teilUUID": "1ff64a1f-4f6a-43fb-a622-ea5329fcd152",
             "bezeichnung": "Fenders",
             "preis": 15000,
             "hersteller": {
+                "herstellerUUID": "1ff64a1f-4f6a-43fb-a622-ea5329fcd152",
                 "herstellerName": "Mansuri",
                 "telephonnummer": "0792222222"
             }

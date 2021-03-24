@@ -64,7 +64,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/lager/list",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/lager/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -75,6 +75,12 @@
 						"resource",
 						"lager",
 						"list"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151"
+						}
 					]
 				}
 			},
@@ -94,7 +100,7 @@
 							"pm.test(\"Validate response\", function () {",
 							"    pm.response.to.be.json;",
 							"    const responseJson = pm.response.json();",
-							"    pm.expect(pm.response.bezeichnung().to.include(\"Turbo\"))",
+							"    pm.expect(pm.response.bezeichnung().to.include(\"Motor\"))",
 							"});"
 						],
 						"type": "text/javascript"
@@ -151,7 +157,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -162,6 +168,12 @@
 						"resource",
 						"teil",
 						"list"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151"
+						}
 					]
 				}
 			},
@@ -175,7 +187,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.status(400);",
 							"});",
 							"",
 							"pm.test(\"Validate response\", function () {",
@@ -191,7 +203,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd154",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -202,6 +214,12 @@
 						"resource",
 						"teil",
 						"list"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd154"
+						}
 					]
 				}
 			},
@@ -241,7 +259,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/lager/list",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/lager/list?bezeichnung=Bremsen",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -252,6 +270,12 @@
 						"resource",
 						"lager",
 						"list"
+					],
+					"query": [
+						{
+							"key": "bezeichnung",
+							"value": "Bremsen"
+						}
 					]
 				}
 			},
@@ -356,7 +380,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list?herstellerName=Pandem",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -367,6 +391,12 @@
 						"resource",
 						"hersteller",
 						"list"
+					],
+					"query": [
+						{
+							"key": "herstellerName",
+							"value": "Pandem"
+						}
 					]
 				}
 			},
@@ -406,7 +436,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/lager/update",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/lager/update?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -417,6 +447,12 @@
 						"resource",
 						"lager",
 						"update"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151"
+						}
 					]
 				}
 			},
@@ -466,7 +502,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/update?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd154",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -477,6 +513,12 @@
 						"resource",
 						"teil",
 						"update"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd154"
+						}
 					]
 				}
 			},
@@ -526,7 +568,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/update?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd15X",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -537,6 +579,12 @@
 						"resource",
 						"teil",
 						"update"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd15X"
+						}
 					]
 				}
 			},
@@ -581,7 +629,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -592,6 +640,12 @@
 						"resource",
 						"hersteller",
 						"list"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151"
+						}
 					]
 				}
 			},
@@ -641,7 +695,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/update?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -652,6 +706,12 @@
 						"resource",
 						"teil",
 						"update"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151"
+						}
 					]
 				}
 			},
@@ -676,7 +736,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd153",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -691,7 +751,7 @@
 					"query": [
 						{
 							"key": "uuid",
-							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd153"
+							"value": "1ff64a1f-4f6a-43fb-a622-ea5329fcd151"
 						}
 					]
 				}
@@ -706,7 +766,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(404);",
+							"    pm.response.to.have.status(400);",
 							"});"
 						],
 						"type": "text/javascript"

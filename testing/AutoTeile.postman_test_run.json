@@ -1,7 +1,7 @@
 {
-	"id": "d9a1c874-0372-4b05-abad-f1cb6d0ba885",
+	"id": "1b14d42c-01dd-4273-b4c8-e0de0914781a",
 	"name": "AutoTeile",
-	"timestamp": "2021-03-24T17:50:47.992Z",
+	"timestamp": "2021-03-24T18:56:19.669Z",
 	"collection_id": "c202e646-f5bc-494c-bd1b-bb8b45eb7224",
 	"folder_id": 0,
 	"environment_id": "0",
@@ -12,7 +12,7 @@
 			"id": "3a1a7001-89b8-426e-a55f-11cb13356ae5",
 			"name": "o.1 Testservice",
 			"url": "http://localhost:8080/AutoTeile-0.1/resource/test/test",
-			"time": 35,
+			"time": 85,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -27,7 +27,7 @@
 				}
 			},
 			"times": [
-				35
+				85
 			],
 			"allTests": [
 				{
@@ -38,8 +38,8 @@
 		{
 			"id": "b22e267c-80eb-4660-9e1f-d7871dfbcf23",
 			"name": "Lager",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/lager/list",
-			"time": 13,
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/lager/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
+			"time": 14,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -59,7 +59,7 @@
 				}
 			},
 			"times": [
-				13
+				14
 			],
 			"allTests": [
 				{
@@ -72,7 +72,7 @@
 			"id": "89cd82ff-d7d0-435d-92dc-f9da91901a06",
 			"name": "read teil",
 			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
-			"time": 6,
+			"time": 8,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -92,7 +92,7 @@
 				}
 			},
 			"times": [
-				6
+				8
 			],
 			"allTests": [
 				{
@@ -104,8 +104,8 @@
 		{
 			"id": "4ac13fbd-b36e-4e33-a2da-919dc01c5b9b",
 			"name": "autoteil",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
-			"time": 5,
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
+			"time": 11,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -125,7 +125,7 @@
 				}
 			},
 			"times": [
-				5
+				11
 			],
 			"allTests": [
 				{
@@ -137,20 +137,20 @@
 		{
 			"id": "6c2ebf2b-8316-4b64-bbe5-c076bce26d9a",
 			"name": "unbekanntes teil",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
-			"time": 5,
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd154",
+			"time": 6,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status test": true,
+				"Status test": false,
 				"Validate response": false
 			},
 			"testPassFailCounts": {
 				"Status test": {
-					"pass": 1,
-					"fail": 0
+					"pass": 0,
+					"fail": 1
 				},
 				"Validate response": {
 					"pass": 0,
@@ -158,11 +158,11 @@
 				}
 			},
 			"times": [
-				5
+				6
 			],
 			"allTests": [
 				{
-					"Status test": true,
+					"Status test": false,
 					"Validate response": false
 				}
 			]
@@ -170,8 +170,8 @@
 		{
 			"id": "d63810ee-a3df-489a-a709-e773f6c91632",
 			"name": "insert lager",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/lager/list",
-			"time": 65,
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/lager/list?bezeichnung=Bremsen",
+			"time": 4,
 			"responseCode": {
 				"code": 405,
 				"name": "Method Not Allowed"
@@ -186,7 +186,7 @@
 				}
 			},
 			"times": [
-				65
+				4
 			],
 			"allTests": [
 				{
@@ -224,8 +224,8 @@
 		{
 			"id": "a3ececba-9193-40e2-abb0-0c22feadfe63",
 			"name": "insert hersteller",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list",
-			"time": 6,
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list?herstellerName=Pandem",
+			"time": 20,
 			"responseCode": {
 				"code": 405,
 				"name": "Method Not Allowed"
@@ -240,7 +240,7 @@
 				}
 			},
 			"times": [
-				6
+				20
 			],
 			"allTests": [
 				{
@@ -251,34 +251,7 @@
 		{
 			"id": "eaad02a7-8642-4b8f-b354-0af8eb22495f",
 			"name": "update lager",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/lager/update",
-			"time": 7,
-			"responseCode": {
-				"code": 405,
-				"name": "Method Not Allowed"
-			},
-			"tests": {
-				"Status test": false
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": false
-				}
-			]
-		},
-		{
-			"id": "dd95e4e6-aca7-4c77-97c5-267be08d300c",
-			"name": "update unknown teil",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/lager/update?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
 			"time": 4,
 			"responseCode": {
 				"code": 405,
@@ -303,9 +276,36 @@
 			]
 		},
 		{
+			"id": "dd95e4e6-aca7-4c77-97c5-267be08d300c",
+			"name": "update unknown teil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/update?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd154",
+			"time": 10,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
 			"id": "3f7cb1d8-c3b2-42b0-a17b-3fcfe250f484",
 			"name": "update invalid teil",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/update?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd15X",
 			"time": 4,
 			"responseCode": {
 				"code": 405,
@@ -332,8 +332,8 @@
 		{
 			"id": "c45729de-ddcd-4c8e-b88b-f5d894149114",
 			"name": "update hersteller",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list",
-			"time": 9,
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
+			"time": 24,
 			"responseCode": {
 				"code": 405,
 				"name": "Method Not Allowed"
@@ -348,7 +348,7 @@
 				}
 			},
 			"times": [
-				9
+				24
 			],
 			"allTests": [
 				{
@@ -359,7 +359,7 @@
 		{
 			"id": "993e4289-ed46-4aba-99f7-41dc710cfebf",
 			"name": "update teil",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/update?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
 			"time": 5,
 			"responseCode": {
 				"code": 405,
@@ -386,8 +386,8 @@
 		{
 			"id": "78fc3026-5e78-4365-83d6-e829039ce2d9",
 			"name": "delete teil",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd153",
-			"time": 120,
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
+			"time": 6,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -402,7 +402,7 @@
 				}
 			},
 			"times": [
-				120
+				6
 			],
 			"allTests": [
 				{
@@ -414,32 +414,32 @@
 			"id": "f7c6f5eb-b3e4-4cb3-ac50-85579fddaae4",
 			"name": "delete unknown teil",
 			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd112",
-			"time": 8,
+			"time": 6,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status test": false
+				"Status test": true
 			},
 			"testPassFailCounts": {
 				"Status test": {
-					"pass": 0,
-					"fail": 1
+					"pass": 1,
+					"fail": 0
 				}
 			},
 			"times": [
-				8
+				6
 			],
 			"allTests": [
 				{
-					"Status test": false
+					"Status test": true
 				}
 			]
 		}
 	],
 	"count": 1,
-	"totalTime": 297,
+	"totalTime": 212,
 	"collection": {
 		"requests": [
 			{
