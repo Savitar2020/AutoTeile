@@ -23,7 +23,7 @@ import java.util.Set;
 @ApplicationPath("/resource")
 
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "auto.properties";
+    private static final String PROPERTIES_PATH = "/home/bzz/IdeaProjects/AutoTeile/testing/auto.properties";
     private static Properties properties = null;
 
     /**
