@@ -83,9 +83,9 @@ public class AutoTeileService {
     ) {
         int httpStatus = 200;
         teil.setTeilUUID(UUID.randomUUID().toString());
-        teil.setBezeichnung(bezeichnung);
-        teil.setPreis(price);
-        teil.setHersteller(hersteller);
+        teil.setBezeichnung(teil.getBezeichnung());
+        teil.setPreis(teil.getPreis());
+        teil.setHersteller(teil.getHersteller());
 
         DataHandler.insertTeil(teil);
 

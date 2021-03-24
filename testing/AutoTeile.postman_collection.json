@@ -7,6 +7,19 @@
 	"item": [
 		{
 			"name": "o.1 Testservice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -51,7 +64,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/lager/list",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -60,7 +73,7 @@
 					"path": [
 						"AutoTeile-0.1",
 						"resource",
-						"teil",
+						"lager",
 						"list"
 					]
 				}
@@ -116,24 +129,99 @@
 		},
 		{
 			"name": "autoteil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validate response\", function () {",
+							"    pm.response.to.be.json;",
+							"    pm.expect(pm.response.text().to.include(\"Ferrari\"))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teil",
+						"list"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "unbekanntes teil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validate response\", function () {",
+							"    pm.response.to.be.json;",
+							"    pm.expect(pm.response.text().to.include(\"rot\"))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"AutoTeile-0.1",
+						"resource",
+						"teil",
+						"list"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "insert lager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -213,7 +301,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/list",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -222,7 +310,7 @@
 					"path": [
 						"AutoTeile-0.1",
 						"resource",
-						"teile",
+						"teil",
 						"list"
 					]
 				}
@@ -378,7 +466,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/update",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -387,7 +475,7 @@
 					"path": [
 						"AutoTeile-0.1",
 						"resource",
-						"teile",
+						"teil",
 						"update"
 					]
 				}
@@ -438,7 +526,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/update",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -447,7 +535,7 @@
 					"path": [
 						"AutoTeile-0.1",
 						"resource",
-						"teile",
+						"teil",
 						"update"
 					]
 				}
@@ -553,7 +641,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/update",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -562,7 +650,7 @@
 					"path": [
 						"AutoTeile-0.1",
 						"resource",
-						"teile",
+						"teil",
 						"update"
 					]
 				}
@@ -571,11 +659,24 @@
 		},
 		{
 			"name": "delete teil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd153",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd153",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -584,7 +685,7 @@
 					"path": [
 						"AutoTeile-0.1",
 						"resource",
-						"teile",
+						"teil",
 						"delete"
 					],
 					"query": [
@@ -616,7 +717,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teile/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd112",
+					"raw": "http://localhost:8080/AutoTeile-0.1/resource/teil/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd112",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -625,7 +726,7 @@
 					"path": [
 						"AutoTeile-0.1",
 						"resource",
-						"teile",
+						"teil",
 						"delete"
 					],
 					"query": [

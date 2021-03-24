@@ -1,36 +1,45 @@
 {
-	"id": "2cc39eab-7473-4d2f-a344-ad3154ac224e",
+	"id": "5a281c2f-3b53-40bb-a13c-885d75c3621c",
 	"name": "AutoTeile",
-	"timestamp": "2021-03-07T10:43:42.410Z",
+	"timestamp": "2021-03-24T15:59:46.147Z",
 	"collection_id": "c202e646-f5bc-494c-bd1b-bb8b45eb7224",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 0,
-	"totalFail": 2,
+	"totalPass": 1,
+	"totalFail": 18,
 	"results": [
 		{
 			"id": "3a1a7001-89b8-426e-a55f-11cb13356ae5",
 			"name": "o.1 Testservice",
 			"url": "http://localhost:8080/AutoTeile-0.1/resource/test/test",
-			"time": 20,
+			"time": 30,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
-			"tests": {},
-			"testPassFailCounts": {},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
 			"times": [
-				20
+				30
 			],
 			"allTests": [
-				{}
+				{
+					"Status test": true
+				}
 			]
 		},
 		{
 			"id": "b22e267c-80eb-4660-9e1f-d7871dfbcf23",
 			"name": "Lager",
-			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
-			"time": 7,
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/lager/list",
+			"time": 12,
 			"responseCode": {
 				"code": 500,
 				"name": "Internal Server Error"
@@ -50,7 +59,7 @@
 				}
 			},
 			"times": [
-				7
+				12
 			],
 			"allTests": [
 				{
@@ -58,10 +67,379 @@
 					"Validate response": false
 				}
 			]
+		},
+		{
+			"id": "89cd82ff-d7d0-435d-92dc-f9da91901a06",
+			"name": "read teil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd151",
+			"time": 72,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status test": false,
+				"Validate response": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate response": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				72
+			],
+			"allTests": [
+				{
+					"Status test": false,
+					"Validate response": false
+				}
+			]
+		},
+		{
+			"id": "4ac13fbd-b36e-4e33-a2da-919dc01c5b9b",
+			"name": "autoteil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+			"time": 21,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status test": false,
+				"Validate response": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate response": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Status test": false,
+					"Validate response": false
+				}
+			]
+		},
+		{
+			"id": "6c2ebf2b-8316-4b64-bbe5-c076bce26d9a",
+			"name": "unbekanntes teil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+			"time": 16,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status test": false,
+				"Validate response": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate response": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status test": false,
+					"Validate response": false
+				}
+			]
+		},
+		{
+			"id": "d63810ee-a3df-489a-a709-e773f6c91632",
+			"name": "insert lager",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/lager/list",
+			"time": 62,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				62
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
+			"id": "3fec76c2-24d8-476d-a2b9-c1e257769e48",
+			"name": "insert teil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/list",
+			"time": 9,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
+			"id": "a3ececba-9193-40e2-abb0-0c22feadfe63",
+			"name": "insert hersteller",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list",
+			"time": 10,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
+			"id": "eaad02a7-8642-4b8f-b354-0af8eb22495f",
+			"name": "update lager",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/lager/update",
+			"time": 5,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
+			"id": "dd95e4e6-aca7-4c77-97c5-267be08d300c",
+			"name": "update unknown teil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
+			"time": 4,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
+			"id": "3f7cb1d8-c3b2-42b0-a17b-3fcfe250f484",
+			"name": "update invalid teil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
+			"time": 5,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
+			"id": "c45729de-ddcd-4c8e-b88b-f5d894149114",
+			"name": "update hersteller",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/hersteller/list",
+			"time": 7,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
+			"id": "993e4289-ed46-4aba-99f7-41dc710cfebf",
+			"name": "update teil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/update",
+			"time": 5,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
+			"id": "78fc3026-5e78-4365-83d6-e829039ce2d9",
+			"name": "delete teil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd153",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		},
+		{
+			"id": "f7c6f5eb-b3e4-4cb3-ac50-85579fddaae4",
+			"name": "delete unknown teil",
+			"url": "http://localhost:8080/AutoTeile-0.1/resource/teil/delete?uuid=1ff64a1f-4f6a-43fb-a622-ea5329fcd112",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
 		}
 	],
 	"count": 1,
-	"totalTime": 27,
+	"totalTime": 272,
 	"collection": {
 		"requests": [
 			{
@@ -73,8 +451,56 @@
 				"method": "GET"
 			},
 			{
+				"id": "89cd82ff-d7d0-435d-92dc-f9da91901a06",
+				"method": "GET"
+			},
+			{
 				"id": "4ac13fbd-b36e-4e33-a2da-919dc01c5b9b",
 				"method": "GET"
+			},
+			{
+				"id": "6c2ebf2b-8316-4b64-bbe5-c076bce26d9a",
+				"method": "GET"
+			},
+			{
+				"id": "d63810ee-a3df-489a-a709-e773f6c91632",
+				"method": "POST"
+			},
+			{
+				"id": "3fec76c2-24d8-476d-a2b9-c1e257769e48",
+				"method": "POST"
+			},
+			{
+				"id": "a3ececba-9193-40e2-abb0-0c22feadfe63",
+				"method": "POST"
+			},
+			{
+				"id": "eaad02a7-8642-4b8f-b354-0af8eb22495f",
+				"method": "POST"
+			},
+			{
+				"id": "dd95e4e6-aca7-4c77-97c5-267be08d300c",
+				"method": "POST"
+			},
+			{
+				"id": "3f7cb1d8-c3b2-42b0-a17b-3fcfe250f484",
+				"method": "POST"
+			},
+			{
+				"id": "c45729de-ddcd-4c8e-b88b-f5d894149114",
+				"method": "POST"
+			},
+			{
+				"id": "993e4289-ed46-4aba-99f7-41dc710cfebf",
+				"method": "POST"
+			},
+			{
+				"id": "78fc3026-5e78-4365-83d6-e829039ce2d9",
+				"method": "DELETE"
+			},
+			{
+				"id": "f7c6f5eb-b3e4-4cb3-ac50-85579fddaae4",
+				"method": "DELETE"
 			}
 		]
 	}

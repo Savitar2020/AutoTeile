@@ -1,5 +1,8 @@
 package ch.bzz.autoTeile.service;
 
+import ch.bzz.autoTeile.data.DataHandler;
+import ch.bzz.autoTeile.model.Hersteller;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.io.FileInputStream;
@@ -33,6 +36,9 @@ public class Config extends Application {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(TestService.class);
         providers.add(AutoTeileService.class);
+        providers.add(LagerListeService.class);
+        providers.add(HerstellerService.class);
+        providers.add(DataHandler.class);
         return providers;
     }
 

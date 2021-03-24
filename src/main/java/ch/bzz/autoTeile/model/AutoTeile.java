@@ -21,8 +21,8 @@ public class AutoTeile extends Hersteller {
     @Size(min=2, max=30)
     private String bezeichnung;
     @FormParam("price")
-    @DecimalMax(value= 100000)
-    @DecimalMin(value= 1)
+    @DecimalMax(value= "100000")
+    @DecimalMin(value= "1")
     private BigDecimal preis;
     @FormParam("hersteller")
     private Hersteller hersteller;

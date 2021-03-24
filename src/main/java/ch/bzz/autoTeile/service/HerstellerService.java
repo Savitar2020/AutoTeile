@@ -81,9 +81,7 @@ public class HerstellerService {
 
         /**
          * creates a new AutoTeil
-         * @param bezeichnung the name of the Autoteil
          * @param hersteller the hersteller
-         * @param price the price
          * @return Response
          */
         @POST
@@ -92,7 +90,6 @@ public class HerstellerService {
         public Response createAutoteil(
                 @Valid @BeanParam Hersteller hersteller,
                 @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}-")
-                @FormParam("hersteller") Hersteller hersteller,
                 @FormParam("teilUUID") String teilUUID
         ) {
             int httpStatus = 200;
@@ -110,13 +107,9 @@ public class HerstellerService {
                     .build();
             return response;
         }
-}
 
     /**
      * updates an existing Hersteller
-     * @param autoteil the Autoteil
-     * @param herstellername the herstellername
-     * @param telephonnummer the telephonnummer
      * @param herstellerUUID the herstellerUUID
      * @return Response
      */

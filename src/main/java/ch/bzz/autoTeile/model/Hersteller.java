@@ -1,9 +1,6 @@
 package ch.bzz.autoTeile.model;
 
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import javax.ws.rs.FormParam;
 
 /**
@@ -19,8 +16,7 @@ public class Hersteller {
     @Size(min=2, max=30)
     private String herstellerName;
     @FormParam("telephonnummer")
-    @DecimalMax(value= 9999999999)
-    @DecimalMin(value= 0)
+    @Pattern(regexp = "[0-9]{10}")
     private long telephonnummer;
     @FormParam("herstellerUUID")
     private String herstellerUUID;
