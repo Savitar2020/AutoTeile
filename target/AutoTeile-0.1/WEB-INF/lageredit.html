@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jason A. Caviezel"/>
+    <meta name="project" content="Autoteile"/>
+    <meta name="description" content="book form edit"/>
+    <title>Teil bearbeiten</title>
+</head>
+<body>
+<form id="teileditForm" name="teiledit">
+    <h3>Teil bearbeiten</h3>
+    <div id="message" style="color: red;"></div>
+    <button type="button" id="logoff">Abmelden</button>
+    <table>
+        <tr>
+            <td><label for="teil">Teil-Bezeichnung</label></td>
+            <td>
+                <input id="teil" name="teil" type="text" size="30" minlength="2" maxlength="30" required/>
+                <input id="teilUUID" name="teilUUID" type="hidden" />
+            </td>
+        </tr>
+        <tr>
+            <td><label for="hersteller">Hersteller</label></td>
+            <td>
+                <input id="hersteller" name=hersteller" type="text" size="30" minlength="2" maxlength="30" />
+                <input id="herstellerUUID" name="herstellerUUID" type="hidden" />
+            </td>
+        </tr>
+        <tr>
+            <td><label for="price">Preis</label></td>
+            <td><input id="price" name="price" type="number" min="0.05" max="199.95" step="0.05"/></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <button id="save" type="submit">Speichern</button>
+            </td>
+            <td>
+                <button id="reset" type="reset">Zurücksetzen</button>
+            </td>
+            <td>
+                <button id="cancel" type="button">Abbruch</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<script src="./js/jquery-3.6.0.min.js"></script>
+<script src="./js/teiledit.js"></script>
+<script src="./js/util.js"></script>
+<script src="./js/js.cookie.js"></script>
+</body>
+</html>
