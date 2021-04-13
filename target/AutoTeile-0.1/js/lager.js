@@ -35,9 +35,9 @@ function loadTeile() {
             if (xhr.status == 403) {
                 window.location.href = "./login.html";
             } else if (xhr.status == 404) {
-                $("#message").text("keine Bücher vorhanden");
+                $("#message").text("keine Teile vorhanden");
             }else {
-                $("#message").text("Fehler beim Lesen der Bücher");
+                $("#message").text("Fehler beim auslesen der Teile");
             }
         })
 
