@@ -28,9 +28,17 @@ public class AutoTeileService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listTeile() {
-        List<Lager> lagerList = ch.bzz.autoTeile.data.DataHandler.getLagerList();
-
+    public Response listTeile(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Lager> lagerList = null;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest"))  {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            lagerList = ch.bzz.autoTeile.data.DataHandler.getLagerList();
+        }
         Response response = Response
                 .status(200)
                 .entity(lagerList)
