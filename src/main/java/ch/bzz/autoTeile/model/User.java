@@ -1,5 +1,7 @@
 package ch.bzz.autoTeile.model;
 
+import java.util.Random;
+
 /**
  * an application user
  * <p>
@@ -84,6 +86,24 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    /**
+     * generates code for 2 factor authentication
+     *
+     * @return generatedString
+     */
+    public String codeGenerator() {
+        int limitL = 97;
+        int limitR = 122;
+        int targetLength = 9;
+        Random random = new Random();
+
+        String generatedString = random.ints(limitL, limitR + 1)
+                .limit(targetLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+        return generatedString;
     }
 
 }
